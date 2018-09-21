@@ -35,6 +35,7 @@ public class LoginController {
 		session.removeAttribute("useridsession");
 		session.invalidate();
 		ModelAndView mav = new ModelAndView("home");
+		mav.getModel().clear();
 		return mav;
 	}
 	

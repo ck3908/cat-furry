@@ -139,5 +139,30 @@ public class RegisterDAO implements RegisterDAOI{
 
 		return done;
 	}
+	
+	
+	@Override
+	public int deleteRegistration(String username) {
+		int done = 0;
+		Connection conn = null;
+		String sql = "delete from customer where username = ?";
+		try {
+			conn = OracleConnection.getConn();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,username);
+			done = ps.executeUpdate();	//delete the record from register - to support testing rollback	
+		}		 catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(!conn.equals(null)) { 
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return done;
+	}
 
 }

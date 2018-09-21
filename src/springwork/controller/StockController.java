@@ -238,7 +238,7 @@ public class StockController {
 		System.out.println("do I get these variables price "+stockpos.getAvgprice());
 		System.out.println("do I get these variables txdate "+stockpos.getTxdate());
 	
-	ModelAndView mav = new ModelAndView("home");
+	ModelAndView mav = new ModelAndView("tradestocks");
 	return mav;
 	}
 	

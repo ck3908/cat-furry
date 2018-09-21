@@ -182,7 +182,7 @@ public class CustomerDAO implements CustomerDAOI {
 			ps.setInt(1,userid);
 			ps.setString(2,symbol);
 			System.out.println("at deletePostion, preparing to delete stock position");
-			ps.executeUpdate();	//delete the record from currentholdings	
+			done = ps.executeUpdate();	//delete the record from currentholdings	
 		}		 catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -338,8 +338,8 @@ public class CustomerDAO implements CustomerDAOI {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1,userid);
 			ps.setString(2,symbol);
-			System.out.println("at deletePostion, preparing to delete stock position");
-			ps.executeUpdate();	//delete the record from currentholdings	
+			System.out.println("at deleteHistory, preparing to delete stock position");
+			done = ps.executeUpdate();	//delete the record from currentholdings	
 		}		 catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -21,7 +21,7 @@ import portfolioDAO.CustomerDAO;
 import portfolioModels.CurrentHoldings;
 import portfolioModels.History;
 
-public class DAOtest {
+public class CustomerDAOTests {
 	
 	CustomerDAO cDAO = new CustomerDAO();
 	
@@ -63,6 +63,9 @@ public class DAOtest {
 		recordToDelete = true;
 	}
 	
+	
+	//this following test essentially also test DAO class insertCurrent since we are now checking
+	//if insert was done correctly by getting the stock position to verify
 	@Test
 	public void testGetStockPosition() throws SQLException, ParseException {
 		CurrentHoldings stocks = cDAO.getStockPosition(userid,stocksym);
@@ -73,7 +76,8 @@ public class DAOtest {
 		assertThat(stocks.getTxdate(),is(dateFormat.parse("09-12-2018")));		
 	}
 		
-	
+	//this following test essentially also test DAO class insertHistory since we are now checking
+	//if insert was done correctly by checking return object is not null after insert
 	@Test
 	public void testGetTransactionHistory() throws SQLException {
 		List<History> stocks = cDAO.getTransactHistory(userid);

@@ -11,4 +11,6 @@ public interface RegisterDAOI {
 	public boolean registration(String username, String password, double cashdeposit, String fullname, String email, String address,
 			String telephone);
 	
+	public int deleteRegistration(String username);
+	
 }
