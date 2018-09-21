@@ -2,7 +2,9 @@
 
 ### Case Study: Brokerage Trading Platform using Java/Spring MVC/Oracle DB/JDBC/JSP/HTML/CSS
 
-This is a basic stock trading program where users can register, login and establish cash position then start trading.
+This is a basic stock trading program where users can register, login and establish cash position then start trading. Login 
+password uses Bcrypt encription for security.
+
 The program will keep track of positions, showing history of trades for the user and display current outstanding
 position. The program also keeps track of aggregate profit and loss and net cash available to trade. Cash balances can
 be updated and changes if trades are made. There are also a number of business rules enforced:
