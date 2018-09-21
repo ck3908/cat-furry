@@ -14,6 +14,9 @@ be updated and changes if trades are made. There are also a number of business r
 
 The stock price currently is not live and are static prices updated via database from one of the major exchanges. A random number generator on stock prices is currently used for testing purposes as temporary pseudo plug for live feed onto the system. The stock symbols are all pre-validated as they are populated from a major stock exchange database.
 
+[flow chart](https://github.com/ck3908/cat-furry/blob/master/brokerage_flow_chart.pdf)
+
+
 ### Prerequisites
 
 - Apache Tomcat server 9
@@ -21,7 +24,7 @@ The stock price currently is not live and are static prices updated via database
 - Java 8 SDK * JRE
 - Oracle 11g Database –must set on autoincrement of keys on the DB itself.
 - JUnit 4 JUnit 4 tests (Unit testing for DAO methods)
-- Test were conducted on major DAO classes, further testing and development needs to be done on other DAO classes.
+- Test were done on all DAO classes.
 
 ### Known Bugs
 
