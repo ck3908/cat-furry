@@ -1,4 +1,4 @@
-## Final Project
+## Final Project Done for Java Developer Program at PerScholas By Andrew Gaw
 
 ### Case Study: Brokerage Trading Platform using Java/Spring MVC/Oracle DB/JDBC/JSP/HTML/CSS
 
