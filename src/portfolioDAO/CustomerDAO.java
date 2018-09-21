@@ -27,15 +27,15 @@ public class CustomerDAO implements CustomerDAOI {
 		String sql = "insert into history (customerid,stocksym, ordertype,numshares,price,txdate,stockname) values (?,?,?,?,?,?,?)";
 		int done = 0;
 		
-		System.out.println("now print inserthistory DAO");
-		System.out.println("order type is "+tradeinsert.getOrdertype());
-		System.out.println("do I get these variables customerid "+tradeinsert.getCustomerid());
-		System.out.println("do I get these variables stockname "+tradeinsert.getStockname());
-		System.out.println("do I get these variables stocksym "+tradeinsert.getStocksym());
-		System.out.println("do I get these variables num shares "+tradeinsert.getNumshares());
-		System.out.println("do I get these variables price "+tradeinsert.getPrice());
-		System.out.println("do I get these variables order type "+tradeinsert.getOrdertype());
-		System.out.println("do I get these variables before conversion to sql date txdate "+tradeinsert.getTxdate());
+//		System.out.println("now print inserthistory DAO");
+//		System.out.println("order type is "+tradeinsert.getOrdertype());
+//		System.out.println("do I get these variables customerid "+tradeinsert.getCustomerid());
+//		System.out.println("do I get these variables stockname "+tradeinsert.getStockname());
+//		System.out.println("do I get these variables stocksym "+tradeinsert.getStocksym());
+//		System.out.println("do I get these variables num shares "+tradeinsert.getNumshares());
+//		System.out.println("do I get these variables price "+tradeinsert.getPrice());
+//		System.out.println("do I get these variables order type "+tradeinsert.getOrdertype());
+//		System.out.println("do I get these variables before conversion to sql date txdate "+tradeinsert.getTxdate());
 						
 		try {
 			conn = OracleConnection.getConn();
@@ -72,13 +72,13 @@ public class CustomerDAO implements CustomerDAOI {
 		String sql = "insert into currentholdings (customerid,stocksym,numshares,avgprice,txdate,stockname) values (?,?,?,?,?,?)";
 		int done = 0;
 		
-		System.out.println("now print insertCurrent DAO");
-		System.out.println("do I get these variables customerid "+addtrade.getCustomerid());
-		System.out.println("do I get these variables stockname "+addtrade.getStockname());
-		System.out.println("do I get these variables stocksym "+addtrade.getStocksym());
-		System.out.println("do I get these variables num shares "+addtrade.getNumshares());
-		System.out.println("do I get these variables price "+addtrade.getAvgprice());
-		System.out.println("do I get these variables order type "+addtrade.getTxdate());
+//		System.out.println("now print insertCurrent DAO");
+//		System.out.println("do I get these variables customerid "+addtrade.getCustomerid());
+//		System.out.println("do I get these variables stockname "+addtrade.getStockname());
+//		System.out.println("do I get these variables stocksym "+addtrade.getStocksym());
+//		System.out.println("do I get these variables num shares "+addtrade.getNumshares());
+//		System.out.println("do I get these variables price "+addtrade.getAvgprice());
+//		System.out.println("do I get these variables order type "+addtrade.getTxdate());
 		try {
 			conn = OracleConnection.getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);			
@@ -108,13 +108,13 @@ public class CustomerDAO implements CustomerDAOI {
 	@Override
 	public int updateCurrent(CurrentHoldings updatetrade) {
 		
-		System.out.println("now print updateCurrent DAO");
-		System.out.println("do I get these variables customerid "+updatetrade.getCustomerid());
-		System.out.println("do I get these variables stockname "+updatetrade.getStockname());
-		System.out.println("do I get these variables stocksym "+updatetrade.getStocksym());
-		System.out.println("do I get these variables num shares "+updatetrade.getNumshares());
-		System.out.println("do I get these variables price "+updatetrade.getAvgprice());
-		System.out.println("do I get these variables order type "+updatetrade.getTxdate());
+//		System.out.println("now print updateCurrent DAO");
+//		System.out.println("do I get these variables customerid "+updatetrade.getCustomerid());
+//		System.out.println("do I get these variables stockname "+updatetrade.getStockname());
+//		System.out.println("do I get these variables stocksym "+updatetrade.getStocksym());
+//		System.out.println("do I get these variables num shares "+updatetrade.getNumshares());
+//		System.out.println("do I get these variables price "+updatetrade.getAvgprice());
+//		System.out.println("do I get these variables order type "+updatetrade.getTxdate());
 		
 		Connection conn = null;
 		String sql = "update currentholdings set numshares = ?, avgprice = ?, txdate = ? where customerid = ? and stocksym = ?";
@@ -181,7 +181,7 @@ public class CustomerDAO implements CustomerDAOI {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1,userid);
 			ps.setString(2,symbol);
-			System.out.println("at deletePostion, preparing to delete stock position");
+//			System.out.println("at deletePostion, preparing to delete stock position");
 			done = ps.executeUpdate();	//delete the record from currentholdings	
 		}		 catch (Exception e) {
 			e.printStackTrace();
@@ -235,7 +235,7 @@ public class CustomerDAO implements CustomerDAOI {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1,cust_id);
 			ps.setString(2,symbol);
-			System.out.println("at stockDAO, preparing to get stock position");
+//			System.out.println("at stockDAO, preparing to get stock position");
 			ResultSet rs = ps.executeQuery();
 			// there is only going to be one position of the symbol in any given portfolio
 			// for example, buy or sell the shares again will simply add or deduct from the current position which will
@@ -338,7 +338,7 @@ public class CustomerDAO implements CustomerDAOI {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1,userid);
 			ps.setString(2,symbol);
-			System.out.println("at deleteHistory, preparing to delete stock position");
+//			System.out.println("at deleteHistory, preparing to delete stock position");
 			done = ps.executeUpdate();	//delete the record from currentholdings	
 		}		 catch (Exception e) {
 			e.printStackTrace();

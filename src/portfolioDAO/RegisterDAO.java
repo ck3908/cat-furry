@@ -26,7 +26,7 @@ public class RegisterDAO implements RegisterDAOI{
 			conn = OracleConnection.getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,username);
-			System.out.println("at retrieving password, preparing to get pw");
+//			System.out.println("at retrieving password, preparing to get pw");
 			ResultSet rs = ps.executeQuery();
 
 			// must check if any results
@@ -38,19 +38,18 @@ public class RegisterDAO implements RegisterDAOI{
 				customerpw = rs.getString(1);
 				customerid = rs.getInt(2);
 				stringcustid = String.valueOf(customerid);  //convert to string in order to put in map		
-				System.out.println("at retrieved password is "+customerpw);
-				System.out.println("at retrieved customerid is "+customerid);
+//				System.out.println("at retrieved password is "+customerpw);
+//				System.out.println("at retrieved customerid is "+customerid);
 			}
 			map.put("pwd", customerpw);
 			map.put("cid", stringcustid);	
 		}		 catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			System.out.println("at registerDAO, line 39 before crash");
-			if(!conn.equals(null)) { System.out.println("at registerDAO, line 40 after crash");
+			if(!conn.equals(null)) { 
 			try {
 				conn.close();
-			} catch (SQLException e) {System.out.println("at registerDAO, sql exception occurred");
+			} catch (SQLException e) {
 			e.printStackTrace();
 			}
 			}
@@ -59,40 +58,7 @@ public class RegisterDAO implements RegisterDAOI{
 	}
 
 	
-//	@Override
-//	public String getpassword (String username) {
-//		boolean validuser = false;
-//		String sql = "select password from customer where username = ?";
-//		Connection conn = null;
-//		String customerpw = "";
-//		try {
-//			conn = OracleConnection.getConn();
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setString(1,username);
-//			System.out.println("at retrieving password, preparing to get pw");
-//			ResultSet rs = ps.executeQuery();
-//			rs.next();
-//			customerpw = rs.getString(1);
-//			System.out.println("at retrieved password is "+customerpw);
-//			
-//		}		 catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			System.out.println("at registerDAO, line 39 before crash");
-//			if(!conn.equals(null)) { System.out.println("at registerDAO, line 40 after crash");
-//				try {
-//					conn.close();
-//				} catch (SQLException e) {System.out.println("at registerDAO, sql exception occurred");
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//
-//		return customerpw;
-//	}
-	
-	
-	
+
 	@Override
 	public boolean registration (String username, String password, double cashdeposit, String fullname, String email, String address,
 			String telephone)  {
@@ -104,10 +70,10 @@ public class RegisterDAO implements RegisterDAOI{
 		String sql = "insert into customer (username,  password,  cashdeposit,  fullname,  email,  address,  telephone, gainloss) values (?,?,?,?,?,?,?,?)";
 		Connection conn = null;
 		try {
-			System.out.println("at registerDAO, in try catch before conn connection");
+	//		System.out.println("at registerDAO, in try catch before conn connection");
 			conn = OracleConnection.getConn();
 			
-			System.out.println("at registerDAO, after conn connection");
+	//		System.out.println("at registerDAO, after conn connection");
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,username);
 			ps.setString(2,BCrypt.hashpw(password, BCrypt.gensalt()));
@@ -117,7 +83,7 @@ public class RegisterDAO implements RegisterDAOI{
 			ps.setString(6,address);
 			ps.setString(7,telephone);
 			ps.setDouble(8,gainloss);
-			System.out.println("at registerDAO, preparing to insert data");
+//			System.out.println("at registerDAO, preparing to insert data");
 			inserted = ps.executeUpdate();
 			if (inserted > 0) {
 				done = true;
@@ -127,11 +93,10 @@ public class RegisterDAO implements RegisterDAOI{
 		}		 catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			System.out.println("at registerDAO, line 39 before crash");
-			if(!conn.equals(null)) { System.out.println("at registerDAO, line 40 after crash");
+			if(!conn.equals(null)) { 
 				try {
 					conn.close();
-				} catch (SQLException e) {System.out.println("at registerDAO, sql exception occurred");
+				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}

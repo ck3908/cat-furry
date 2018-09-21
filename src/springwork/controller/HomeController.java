@@ -36,7 +36,7 @@ public class HomeController {
 	}
 
 
-
+// not used just for testing
 	@RequestMapping("/validate")
 	public ModelAndView validate() {
 		ModelAndView mav = new ModelAndView("validate");

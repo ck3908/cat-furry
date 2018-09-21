@@ -29,7 +29,7 @@ public class LoginController {
 	
 	@RequestMapping("/logout") 
 	public ModelAndView logout(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) {  // prepare to clear credentials to prevent user from going back in
 		HttpSession session = request.getSession(false);
 		session.removeAttribute("usersession");
 		session.removeAttribute("useridsession");
@@ -49,17 +49,20 @@ public class LoginController {
 		String password=request.getParameter("password");
 		
 		String message;
+		
+		//using a hashmap to fetch password and customerid because I didn't want to 
+		//make 2 calls because they are different types id is integer and other is string
 		HashMap<String,String> pwidmap = new HashMap<String,String>();
 		RegisterDAO userDAO = new RegisterDAO();
 		pwidmap = userDAO.getpwid(username);
 		//print out all the keys
-		for(String value: pwidmap.values()) {
-			System.out.println(value);
-		}
+//		for(String value: pwidmap.values()) {
+//			System.out.println(value);
+//		}
 		String getpw = pwidmap.get("pwd");
 		String getcustid = pwidmap.get("cid");
 		
-		if (getpw.equals("invalid")) { // if username not on database then...
+		if (getpw.equals("invalid")) { // if username not on database then...bring him back to login page
 			message = "Wrong username or password, please try again or register";
 			return new ModelAndView("login", 
 					"message", message);
@@ -67,8 +70,8 @@ public class LoginController {
 		
 		// otherwise continue
 		int customerid = Integer.parseInt(getcustid);  //convert to integer
-		System.out.println("in loginprocess converted customerid to integer "+customerid);
-		System.out.println("encrypted pw is "+getpw);
+//		System.out.println("in loginprocess converted customerid to integer "+customerid);
+//		System.out.println("encrypted pw is "+getpw);
 		
 	
 //		if( password != null && !password.equals("") && 
@@ -86,6 +89,9 @@ public class LoginController {
 			double cashbalance = customerDAO.getCashBalance(username);
 			model.addAttribute("cashposition",cashbalance);
 			double profitloss = customerDAO.getGainLoss(username);
+			
+			//sending user to cash mgmt page so must set up data for that page in login process
+			
 			ModelAndView mav = new ModelAndView("cashmgmt");
 			mav.addObject("username",username);
 			mav.addObject("cash",cashbalance);

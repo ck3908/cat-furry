@@ -28,7 +28,7 @@ public class StockDAO implements StockDAOI {
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,symbol);
-			System.out.println("at stockDAO, preparing to get data");
+//			System.out.println("at stockDAO, preparing to get data");
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			thisStock.setstocksym(rs.getString("stocksym"));
@@ -56,7 +56,7 @@ public class StockDAO implements StockDAOI {
 	@Override
 	public double getStockPrice(String stocksym) {
 		double stockprice = 0.0;
-		System.out.print("stocksym is "+stocksym);
+//		System.out.print("stocksym is "+stocksym);
 		String sql = "select lastprice from stocktable where stocksym = ?";
 		Connection conn = null;
 		try {
@@ -64,7 +64,7 @@ public class StockDAO implements StockDAOI {
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1,stocksym);
-			System.out.println("at stockDAO, preparing to get data");
+//			System.out.println("at stockDAO, preparing to get data");
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			stockprice = rs.getDouble("lastprice");			

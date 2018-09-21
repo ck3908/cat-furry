@@ -84,7 +84,7 @@ public class RegisterController {
 			username = username.substring(0, username.length() - 1);
 			}	
 		
-		System.out.println("at registration mapping usernmae is"+username);
+//		System.out.println("at registration mapping usernmae is"+username);
 
 		String password= request.getParameter("password");
 		
@@ -107,7 +107,7 @@ public class RegisterController {
 		if (telephone.endsWith("/")) {
 			telephone = telephone.substring(0, telephone.length() - 1);
 			}
-		System.out.println("at registration mapping telehpne is"+telephone);
+//		System.out.println("at registration mapping telehpne is"+telephone);
 		//	customer.setTelephone(telephone);
 		
 		String cash = request.getParameter("cashdeposit");
@@ -119,7 +119,7 @@ public class RegisterController {
 		if (telephone.endsWith("/")) {
 			telephone = telephone.substring(0, telephone.length() - 1);
 			}
-		System.out.println("at registration mapping cash deposit after conversion is"+cashdeposit);
+//		System.out.println("at registration mapping cash deposit after conversion is"+cashdeposit);
 		//	customer.setcashdeposit(cashdeposit);
 		String message;
 		Boolean registered = false;
