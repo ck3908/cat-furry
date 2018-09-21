@@ -1,4 +1,3 @@
-# cat-furry
 Final Project User Stories
 By Andrew Gaw
 Case Study: Brokerage Trading Platform
