@@ -6,15 +6,24 @@ This is a basic stock trading program where users can register, login and establ
 password uses Bcrypt encription for security.
 
 The program will keep track of positions, showing history of trades for the user and display current outstanding
-position. The program also keeps track of aggregate profit and loss and net cash available to trade. Cash balances can
-be updated and changes if trades are made. There are also a number of business rules enforced:
+position. Adding to an existing position will show in the current portfolio as an aggregate holding with the price adjusted based on price weighted average of the positions attained. For example, buy 100 shares of ABC at $100 per share then buy another 100 shares of ABC at $200 per share will be displayed as current position of 200 shares bought at $150 per share (avg of $100 and $200). 
+
+The program also keeps track of aggregate profit and loss and net cash available to trade. Cash balances can
+be updated and changes if trades are made. There are also a few of business rules enforced currently:
 
 - Only purchase the value of shares within cash account limit. 
 - Cannot sell more shares than he or she owns. Cannot short sell.
 
 The stock price currently is not live and are static prices updated via database from one of the major exchanges. A random number generator on stock prices is currently used for testing purposes as temporary pseudo plug for live feed onto the system. The stock symbols are all pre-validated as they are populated from a major stock exchange database.
 
-[flow chart](https://github.com/ck3908/cat-furry/blob/master/brokerage_flow_chart.pdf)
+The following links show the initial concept designs (wireframe), user flow chart and DB entity relationships:
+
+[concept_design_wireframe](https://github.com/ck3908/cat-furry/blob/master/AGawBrokerageWireFrame.pdf)
+
+[user flow chart](https://github.com/ck3908/cat-furry/blob/master/brokerage_flow_chart.pdf)
+
+[DB entity relationships](https://github.com/ck3908/cat-furry/blob/master/DB_Entity_Relationships.pdf)
+
 
 
 ### Prerequisites
